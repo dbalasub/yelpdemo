@@ -14,9 +14,11 @@
 	
 <%=render 'layouts/navbar'%>
 <div class="container-fluid">
+	<p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 	<%= yield %>
 	<%= render 'layouts/footer'%>
-	<%= image_tag "https://s3.amazonaws.com/syelpdemo/happy_footer.png" %>
+	
 </div>
 </body>
 </html>
