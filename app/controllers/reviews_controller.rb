@@ -1,21 +1,13 @@
 
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_review, only: [:edit, :update, :destroy]
+  
   respond_to :html 
-  def index
-    @reviews = Review.all
-    respond_with(@reviews)
-  end
-
-  def show
-    respond_with(@review)
-  end
-
+  
   def new
     @review = Review.new
-    respond_with(@review)
+    
   end
 
   def edit
@@ -24,8 +16,17 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
-    @review.save
-    respond_with(@review)
+
+    respond_to do |format|
+      if @review.save
+        format.html { redirect_to root_path, notice: 'Review was saved successfully' }
+        format.json { render :show, status: :created, location: @review }
+      else
+        format.html {render :new}
+        format.json {render json: @review.errors, status: :unprocessable_entity}
+      end
+    end
+   
   end
 
   def update
