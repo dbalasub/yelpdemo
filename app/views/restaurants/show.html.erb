@@ -24,10 +24,10 @@
 </p>
 <%= link_to "Write Review", new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
 <iframe
-      width="450"
+      width="250"
       height="250"
       frameborder="0" style="border:0"  
-      src="https://www.google.com/maps/embed/v1/search?key=API_KEY&q=record+stores+in+Seattle">
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDmsCHB8LyDJNoO00mxfDahkephRZHnFto&q=<%=@restaurant.address.parameterize%>">
     </iframe> 
   </div>
   <div class="col-md-9">
