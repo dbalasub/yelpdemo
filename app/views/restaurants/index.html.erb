@@ -25,8 +25,9 @@
         <td><%= restaurant.address %></td>
         <td><%= restaurant.phone %></td>
         <td><%= link_to restaurant.website, restaurant.website %></td>
-        <% if user_signed_in? && current_user.admin? %>
+        
         <td><%= link_to 'Show', restaurant ,class:"btn btn-link"%></td>
+        <% if user_signed_in? && current_user.admin? %>
         <td><%= link_to 'Edit', edit_restaurant_path(restaurant),class:"btn btn-link"%>
          
         </td>
